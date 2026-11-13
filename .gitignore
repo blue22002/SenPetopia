@@ -1,0 +1,19 @@
+# React
+fontend/node_modules/
+fontend/dist/
+
+# .NET
+backend/**/bin/
+backend/**/obj/
+
+# Visual Studio
+.vs/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# User settings
+*.user
+*.suo
