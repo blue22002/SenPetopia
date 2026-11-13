@@ -11,13 +11,12 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReact", policy =>
     {
-        policy
-            .WithOrigins(
-                "http://localhost:5173",
-                "https://sen-petopia-gules.vercel.app/"
-            )
-            .AllowAnyHeader()
-            .AllowAnyMethod();
+        policy.WithOrigins(
+            "http://localhost:5173",
+            "https://sen-petopia-gules.vercel.app"
+        )
+        .AllowAnyHeader()
+        .AllowAnyMethod();
     });
 });
 // Add services to the container.
