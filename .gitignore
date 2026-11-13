@@ -17,3 +17,4 @@ backend/**/obj/
 # User settings
 *.user
 *.suo
+appsettings.Development.json

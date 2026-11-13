@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 
 // Thay PORT bằng cổng HTTPS Backend của bạn
-const API_URL = 'http://localhost:5181/api/SanPham'
+const API_URL = 'https://senpetopia-api.onrender.com/api/SanPham'
 
 const CATEGORIES = [
   { icon: '🥣', name: 'Thức ăn' },
