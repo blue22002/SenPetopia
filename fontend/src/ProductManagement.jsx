@@ -75,88 +75,106 @@ export default function ProductManagement({ onBack }) {
   }
 
   return (
-    <div style={{ padding: 30 }}>
-      <button onClick={onBack}>← Quay lại trang chủ</button>
+    <div className="management-page">
+      <div className="management-header">
+        <button className="back-btn" onClick={onBack}>
+          ← Quay lại trang chủ
+        </button>
+        <h1>Quản lý sản phẩm</h1>
+      </div>
 
-      <h1>Quản lý sản phẩm SenPetopia</h1>
+      <section className="management-form">
+        <h2>Thêm sản phẩm mới</h2>
 
-      <h2>Thêm sản phẩm</h2>
+        <form onSubmit={addProduct}>
+          <input
+            placeholder="Tên sản phẩm"
+            value={tenSP}
+            onChange={e => setTenSP(e.target.value)}
+            required
+          />
 
-      <form onSubmit={addProduct}>
-        <input
-          placeholder="Tên sản phẩm"
-          value={tenSP}
-          onChange={e => setTenSP(e.target.value)}
-          required
-        />
+          <select
+            value={danhMuc}
+            onChange={e => setDanhMuc(e.target.value)}
+          >
+            <option>Thức ăn</option>
+            <option>Đồ chơi</option>
+            <option>Quần áo</option>
+            <option>Phụ kiện</option>
+            <option>Vệ sinh & chăm sóc</option>
+          </select>
 
-        <select
-          value={danhMuc}
-          onChange={e => setDanhMuc(e.target.value)}
-        >
-          <option>Thức ăn</option>
-          <option>Đồ chơi</option>
-          <option>Quần áo</option>
-          <option>Phụ kiện</option>
-          <option>Vệ sinh & chăm sóc</option>
-        </select>
+          <input
+            type="number"
+            placeholder="Giá bán"
+            min="0"
+            value={giaBan}
+            onChange={e => setGiaBan(e.target.value)}
+            required
+          />
 
-        <input
-          type="number"
-          placeholder="Giá bán"
-          min="0"
-          value={giaBan}
-          onChange={e => setGiaBan(e.target.value)}
-          required
-        />
+          <input
+            type="number"
+            placeholder="Số lượng tồn"
+            min="0"
+            value={soLuongTon}
+            onChange={e => setSoLuongTon(e.target.value)}
+            required
+          />
 
-        <input
-          type="number"
-          placeholder="Số lượng tồn"
-          min="0"
-          value={soLuongTon}
-          onChange={e => setSoLuongTon(e.target.value)}
-          required
-        />
+          <button type="submit" className="add-product-btn">
+            + Thêm sản phẩm
+          </button>
+        </form>
+      </section>
 
-        <button type="submit">+ Thêm sản phẩm</button>
-      </form>
+      <section className="management-list">
+        <h2>Danh sách sản phẩm</h2>
 
-      <h2>Danh sách sản phẩm</h2>
+        {loading ? (
+          <p className="status-message">Đang tải sản phẩm...</p>
+        ) : (
+          <div className="table-container">
+            <table className="management-table">
+              <thead>
+                <tr>
+                  <th>Mã SP</th>
+                  <th>Tên sản phẩm</th>
+                  <th>Danh mục</th>
+                  <th>Giá bán</th>
+                  <th>Số lượng</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
 
-      {loading ? (
-        <p>Đang tải sản phẩm...</p>
-      ) : (
-        <table border="1" cellPadding="10" style={{ width: '100%' }}>
-          <thead>
-            <tr>
-              <th>Mã SP</th>
-              <th>Tên sản phẩm</th>
-              <th>Danh mục</th>
-              <th>Giá bán</th>
-              <th>Số lượng</th>
-              <th>Thao tác</th>
-            </tr>
-          </thead>
+              <tbody>
+                {products.map(p => (
+                  <tr key={p.maSP}>
+                    <td>{p.maSP}</td>
+                    <td>{p.tenSP}</td>
+                    <td>{p.danhMuc}</td>
+                    <td>{money(p.giaBan)}</td>
+                    <td>{p.soLuongTon}</td>
+                    <td>
+                      <button
+                        className="delete-btn"
+                        onClick={() => deleteProduct(p.maSP)}
+                      >
+                        Xóa
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
 
-          <tbody>
-            {products.map(p => (
-              <tr key={p.maSP}>
-                <td>{p.maSP}</td>
-                <td>{p.tenSP}</td>
-                <td>{p.danhMuc}</td>
-                <td>{money(p.giaBan)}</td>
-                <td>{p.soLuongTon}</td>
-                <td>
-                  <button onClick={() => deleteProduct(p.maSP)}>
-                    Xóa
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+            {products.length === 0 && (
+              <p className="status-message">Chưa có sản phẩm nào.</p>
+            )}
+          </div>
+        )}
+      </section>
     </div>
   )
 }

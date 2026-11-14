@@ -61,7 +61,7 @@ if (showManagement) {
         <div className="bar-actions">
           <a href="#dang-nhap" className="login-link">Đăng nhập</a>
           <a href="#gio-hang" className="cart-btn">🛒 Giỏ hàng</a>
-          <button className="login-link" onClick={() => setShowManagement(true)}>Quản lý sản phẩm </button>
+          <button className="manage-btn" onClick={() => setShowManagement(true)}>⚙ Quản lý sản phẩm</button>
         </div>
       </header>
 
