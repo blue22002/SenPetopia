@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import './App.css'
+import ProductManagement from './ProductManagement'
 
 // Thay PORT bằng cổng HTTPS Backend của bạn
 const API_URL = 'https://senpetopia-api.onrender.com/api/SanPham'
@@ -21,6 +22,7 @@ export default function App() {
   const [error, setError] = useState('')
   const [keyword, setKeyword] = useState('')
   const [category, setCategory] = useState('Tất cả')
+  const [showManagement, setShowManagement] = useState(false)
 
   useEffect(() => {
     fetch(API_URL)
@@ -38,7 +40,13 @@ export default function App() {
     const matchCategory = category === 'Tất cả' || p.danhMuc === category
     return matchName && matchCategory
   })
-
+if (showManagement) {
+  return (
+    <ProductManagement
+      onBack={() => setShowManagement(false)}
+    />
+  )
+}
   return (
     <>
       <header className="bar">
@@ -53,6 +61,7 @@ export default function App() {
         <div className="bar-actions">
           <a href="#dang-nhap" className="login-link">Đăng nhập</a>
           <a href="#gio-hang" className="cart-btn">🛒 Giỏ hàng</a>
+          <button className="login-link" onClick={() => setShowManagement(true)}>Quản lý sản phẩm </button>
         </div>
       </header>
 
