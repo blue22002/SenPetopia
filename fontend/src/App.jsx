@@ -1,6 +1,8 @@
 
 import { useEffect, useState } from 'react'
 import './App.css'
+import ProductManagement from './ProductManagement'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // Thay PORT bằng cổng HTTPS Backend của bạn
 const API_URL = 'https://senpetopia-api.onrender.com/api/SanPham'
@@ -21,6 +23,7 @@ export default function App() {
   const [error, setError] = useState('')
   const [keyword, setKeyword] = useState('')
   const [category, setCategory] = useState('Tất cả')
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetch(API_URL)
@@ -38,9 +41,10 @@ export default function App() {
     const matchCategory = category === 'Tất cả' || p.danhMuc === category
     return matchName && matchCategory
   })
-
   return (
-    <>
+  <Routes>
+    <Route path="/" element={
+      <>
       <header className="bar">
         <a href="#" className="brand">🐾 SenPetopia</a>
 
@@ -53,6 +57,7 @@ export default function App() {
         <div className="bar-actions">
           <a href="#dang-nhap" className="login-link">Đăng nhập</a>
           <a href="#gio-hang" className="cart-btn">🛒 Giỏ hàng</a>
+         <button className="manage-btn" onClick={() => navigate('/quan-ly-san-pham')}>⚙ Quản lý sản phẩm</button>
         </div>
       </header>
 
@@ -192,6 +197,17 @@ export default function App() {
         <strong>🐾 SenPetopia</strong>
         <span>© {new Date().getFullYear()} SenPetopia. Yêu thương thú cưng mỗi ngày.</span>
       </footer>
-    </>
-  )
+         </>
+    } />
+
+    <Route
+      path="/quan-ly-san-pham"
+      element={
+        <ProductManagement
+          onBack={() => navigate('/')}
+        />
+      }
+    />
+  </Routes>
+)
 }

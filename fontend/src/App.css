@@ -401,3 +401,183 @@ footer {
     flex-direction: column;
   }
 }
+
+/* Nút quản lý sản phẩm trên thanh menu */
+.bar-actions button.login-link {
+  border: none;
+  background: #df815b;
+  color: white;
+  padding: 11px 17px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.bar-actions button.login-link:hover {
+  background: #c96d48;
+  color: white;
+}
+
+/* Trang quản lý sản phẩm */
+.management-page {
+  width: 90%;
+  max-width: 1200px;
+  margin: 35px auto;
+  color: #49372d;
+}
+
+.management-header {
+  margin-bottom: 25px;
+}
+
+.management-header h1 {
+  margin: 20px 0;
+  font-size: 28px;
+}
+
+.back-btn {
+  border: 1px solid #df815b;
+  background: white;
+  color: #df815b;
+  padding: 10px 16px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background: #fff2e9;
+}
+
+.management-form,
+.management-list {
+  background: white;
+  border: 1px solid #eee5dc;
+  border-radius: 10px;
+  padding: 22px;
+  margin-bottom: 25px;
+}
+
+.management-form h2,
+.management-list h2 {
+  font-size: 20px;
+  margin: 0 0 20px;
+}
+
+.management-form form {
+  display: grid;
+  grid-template-columns: 2fr 1.3fr 1.3fr 1fr auto;
+  gap: 12px;
+}
+
+.management-form input,
+.management-form select {
+  width: 100%;
+  min-width: 0;
+  padding: 11px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+}
+
+.management-form input:focus,
+.management-form select:focus {
+  border-color: #df815b;
+}
+
+.add-product-btn {
+  border: none;
+  background: #df815b;
+  color: white;
+  padding: 11px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.add-product-btn:hover {
+  background: #c96d48;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.management-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 650px;
+}
+
+.management-table th,
+.management-table td {
+  border-bottom: 1px solid #eee5dc;
+  padding: 13px 12px;
+  text-align: left;
+}
+
+.management-table th {
+  background: #fff5ed;
+  color: #49372d;
+  font-weight: 700;
+}
+
+.management-table tbody tr:hover {
+  background: #fffaf6;
+}
+
+.delete-btn {
+  border: none;
+  background: #dc5555;
+  color: white;
+  padding: 7px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #bd3d3d;
+}
+
+@media (max-width: 850px) {
+  .management-form form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .add-product-btn {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 520px) {
+  .management-page {
+    width: 94%;
+    margin: 20px auto;
+  }
+
+  .management-form,
+  .management-list {
+    padding: 15px;
+  }
+
+  .management-form form {
+    grid-template-columns: 1fr;
+  }
+
+  .add-product-btn {
+    grid-column: auto;
+  }
+}
+.manage-btn {
+  border: 1px solid #df815b;
+  background: white;
+  color: #df815b;
+  padding: 11px 17px;
+  border-radius: 22px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.manage-btn:hover {
+  background: #fff2e9;
+}
