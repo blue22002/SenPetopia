@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 //const LOGIN_API = 'http://localhost:5181/api/TaiKhoan/dang-nhap'
-const LOGIN_API = 'https://senpetoria-api.onrender.com/api/TaiKhoan/dang-nhap'
+const LOGIN_API = 'https://senpetopia-api.onrender.com/api/TaiKhoan/dang-nhap'
 
 export default function Login() {
   const [tenDangNhap, setTenDangNhap] = useState('')
