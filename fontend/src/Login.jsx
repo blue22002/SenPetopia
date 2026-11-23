@@ -2,7 +2,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const LOGIN_API = 'http://localhost:5181/api/TaiKhoan/dang-nhap'
+//const LOGIN_API = 'http://localhost:5181/api/TaiKhoan/dang-nhap'
+const API_URL = 'https://senpetopia-api.onrender.com/api/SanPham'
 
 export default function Login() {
   const [tenDangNhap, setTenDangNhap] = useState('')

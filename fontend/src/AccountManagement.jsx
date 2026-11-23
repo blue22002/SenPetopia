@@ -1,7 +1,8 @@
 
 import { useEffect, useState } from 'react'
 
-const API_URL = 'http://localhost:5181/api/TaiKhoan'
+//const API_URL = 'http://localhost:5181/api/TaiKhoan'
+const API_URL = 'https://senpetopia-api.onrender.com/api/SanPham'
 
 export default function AccountManagement({ onBack }) {
   const [accounts, setAccounts] = useState([])

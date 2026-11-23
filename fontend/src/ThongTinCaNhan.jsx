@@ -2,7 +2,8 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const API_URL = 'http://localhost:5181/api/TaiKhoan'
+//const API_URL = 'http://localhost:5181/api/TaiKhoan'
+const API_URL = 'https://senpetopia-api.onrender.com/api/SanPham'
 
 export default function ThongTinCaNhan() {
   const navigate = useNavigate()

@@ -2,7 +2,8 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const API_URL = 'http://localhost:5181/api/GioHang'
+//const API_URL = 'http://localhost:5181/api/GioHang'
+const API_URL = 'https://senpetopia-api.onrender.com/api/SanPham'
 const KHACH_HANG_API = 'http://localhost:5181/api/KhachHang'
 
 const money = (n) =>
