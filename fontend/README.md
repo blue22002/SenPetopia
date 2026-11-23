@@ -13,7 +13,7 @@ npm run dev
 git init
 git add .
 git commit -m "first commit"
-git branch -M main
+git branch -M Nhanhcuaban
 git remote add origin https://github.com/TEN-BAN/TEN-REPO.git
 git push -u origin main
 ```

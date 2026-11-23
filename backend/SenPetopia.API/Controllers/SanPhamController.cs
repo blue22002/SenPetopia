@@ -1,11 +1,12 @@
+﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SenPetopia.API.Data;
 
 namespace SenPetopia.API.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
     public class SanPhamController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -15,35 +16,32 @@ namespace SenPetopia.API.Controllers
             _context = context;
         }
 
+        // Lấy danh sách sản phẩm kèm tên danh mục
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var sanPhams = await _context.SanPham.ToListAsync();
-            return Ok(sanPhams);
-        }
-        [HttpPost]
-        public async Task<IActionResult> Create([FromBody] Models.SanPham sanPham)
-        {
-            _context.SanPham.Add(sanPham);
-            await _context.SaveChangesAsync();
+            var products = await (
+                from sp in _context.SanPham
+                join dm in _context.DanhMuc
+                    on sp.MaDm equals dm.MaDm
+                select new
+                {
+                    maSP = sp.MaSp,
+                    maDM = sp.MaDm,
+                    tenSP = sp.TenSp,
+                    danhMuc = dm.TenDanhMuc,
+                    giaBan = sp.GiaBan,
+                    soLuongTon = sp.SoLuongTon,
+                    hinhAnh = sp.HinhAnh,
+                    moTa = sp.MoTa,
+                    loaiPhuHop = sp.LoaiPhuHop,
+                    canNangPhuHop = sp.CanNangPhuHop,
+                    doTuoiPhuHop = sp.DoTuoiPhuHop,
+                    trangThai = sp.TrangThai
+                }
+            ).ToListAsync();
 
-            return Ok(sanPham);
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            var sanPham = await _context.SanPham.FindAsync(id);
-
-            if (sanPham == null)
-            {
-                return NotFound(new { message = "Không tìm thấy sản phẩm" });
-            }
-
-            _context.SanPham.Remove(sanPham);
-            await _context.SaveChangesAsync();
-
-            return Ok(new { message = "Xóa sản phẩm thành công" });
+            return Ok(products);
         }
     }
 }
