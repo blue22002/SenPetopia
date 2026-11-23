@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom'
 
 //const API_URL = 'http://localhost:5181/api/GioHang'
 const API_URL = 'https://senpetopia-api.onrender.com/api/GioHang'
-const KHACH_HANG_API = 'http://localhost:5181/api/KhachHang'
-const HACH_HANG_API = 'https://senpetopia-api.onrender.com/api/KhachHang'
+//const KHACH_HANG_API = 'http://localhost:5181/api/KhachHang'
+const KHACH_HANG_API = 'https://senpetopia-api.onrender.com/api/KhachHang'
 
 const money = (n) =>
   Number(n).toLocaleString('vi-VN') + '₫'
